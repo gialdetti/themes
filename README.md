@@ -43,7 +43,7 @@ All examples are located in [examples](examples) folder.
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| [Markets](https://nbviewer.jupyter.org/github/gialdetti/themes/blob/master/examples/plot-markets.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/themes/master?filepath=examples/markets.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/themes/blob/master/examples/markets.ipynb) | 
+| [Markets](https://nbviewer.jupyter.org/github/gialdetti/themes/blob/main/examples/plot-markets.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/themes/main?filepath=examples/plot-markets.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/themes/blob/main/examples/plot-markets.ipynb) | 
 
 ### Testing
 After installation, you can launch the test suite:
