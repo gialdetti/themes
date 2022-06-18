@@ -1,56 +1,43 @@
 import logging
+from themes.themes.base import capon_theme
 
 
 logger = logging.getLogger(__name__)
+custom_themes = {"capon": capon_theme}
 
 
 def register(include=None, exclude=None, enable=None):
+    themers_map = find_themers()
+
     if include is None:
-        include = ["matplotlib", "altair"]
+        include = list(themers_map.keys())
     if exclude is not None:
         include = [v for v in include if v not in exclude]
-    logger.info(f"Trying to registering themes to {include}")
+    logger.info(f"Trying to register themes to {include}")
 
-    if "matplotlib" in include:
-        try:
-            import matplotlib as mpl
-            import matplotlib.pyplot as plt
-
-            logger.info("Registering themes to matplotlib")
-
-            for name, theme in custom_themes.items():
-                logger.info(f"Registering '{name}' theme to matplotlib")
-                plt.style.library.update({name: mpl.RcParams(theme["matplotlib"])})
-                plt.style.available[:] = sorted(plt.style.library.keys())
-
-            if enable is not None:
-                logger.info(f"Enabling {enable} for matplotlib")
-        except ImportError:
-            pass
-
-    if "altair" in include:
-        try:
-            import altair as alt
-
-            logger.info("Registering themes to altair")
-            for name, theme in custom_themes.items():
-                logger.info(f"Registering '{name}' theme to altair")
-                alt.themes.register(name, theme["altair"])
-
-            if enable is not None:
-                logger.info(f"Enabling {enable} for altair")
-
-        except ImportError:
-            pass
+    for themer_name in include:
+        logger.info(f"Registering themes to {themer_name}")
+        themer = themers_map[themer_name]
+        for name, theme in custom_themes.items():
+            logger.info(f"Registering '{name}' theme to {themer_name}")
+            themer.register(name, theme)
 
 
-custom_themes = {
-    "capon": {
-        "altair": lambda: {
-            "config": {
-                "background": "#fff1e5",
-            }
-        },
-        "matplotlib": {"figure.facecolor": "#fff1e5", "axes.facecolor": "#fff1e5"},
-    }
-}
+def find_themers():
+    themers = {}
+
+    try:
+        from themes.themers.matplotlib import MatplotlibThemer
+
+        themers["matplotlib"] = MatplotlibThemer
+    except ImportError:
+        pass
+
+    try:
+        from themes.themers.altair import AltairThemer
+
+        themers["altair"] = AltairThemer
+    except ImportError:
+        pass
+
+    return themers
