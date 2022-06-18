@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OS
+.DS_Store
+
+# IntelliJ
+.idea
+.idea/
+.idea/*
+/.idea/
+.idea/modules.xml
+.idea/misc.xml
+
+# VSCode
+.vscode/
