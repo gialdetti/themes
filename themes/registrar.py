@@ -22,6 +22,12 @@ def register(include=None, exclude=None, enable=None):
             logger.info(f"Registering '{name}' theme to {themer_name}")
             themer.register(name, theme)
 
+    if enable is not None:
+        for themer_name in include:
+            logger.info(f"Enabling '{name}' in {themer_name}")
+            themer = themers_map[themer_name]
+            themer.enable(enable)
+
 
 def find_themers():
     themers = {}

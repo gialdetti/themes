@@ -17,7 +17,7 @@ class MatplotlibThemer(BaseThemer):
         plt.style.available[:] = sorted(plt.style.library.keys())
 
     def enable(name):
-        raise NotImplementedError
+        plt.style.use(name)
 
     def list():
         return plt.style.available

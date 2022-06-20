@@ -13,7 +13,7 @@ class AltairThemer(BaseThemer):
         alt.themes.register(name, AltairThemer.transform(theme))
 
     def enable(name):
-        raise NotImplementedError
+        alt.themes.enable(name)
 
     def list():
         return alt.themes.names()
