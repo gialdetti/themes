@@ -1,4 +1,4 @@
-from themes.themes.base import BaseTheme
+import yaml
 
 
 textColor = "#3C3C3C"
@@ -8,6 +8,17 @@ gridColor = "#D5CDBE"
 
 # axisColor = "red"
 # gridColor = "green"
+
+status = {
+    "primary": None,
+    "secondary": None,
+    "danger": "#c00",
+    "success": "#458b00",
+    "warning": None,
+    "info": None,
+    "light": None,
+    "dark": None,
+}
 
 schemes = {
     "qualitative": {
@@ -44,18 +55,48 @@ schemes = {
     },
 }
 
-capon_theme = BaseTheme(
-    {
-        "paper": {"color": "#fff1e5"},
-        "font": {"family": "Lato", "color": textColor},
-        "title": {"font": {"size": 18}, "anchor": "start"},
-        "axis": {
-            "title": {"color": axisColor},
-            "label": {"color": "#606060"},
-            "domain": {"color": axisColor},
-            "grid": {"color": gridColor},
-        },
-        "coloring": {"categorical": schemes["qualitative"]["Set1"]},
-    }
-)
+
+capon_theme_spec = f"""
+paper:
+    color: "#fff1e5"
+
+font:
+    family: "Palatino"
+    color: "{textColor}"
+
+title:
+    font:
+        size: 18
+    anchor: "start"
+
+axis:
+    title: 
+        color: "{axisColor}"
+    label:
+        color: "#606060"
+    domain:
+        color: "{axisColor}"
+    grid: 
+        color: "{gridColor}"
+
+coloring:
+    categorical: {schemes["qualitative"]["Set1"]}
+"""
+
+
+capon_theme = yaml.safe_load(capon_theme_spec)
 capon_theme
+
+
+if False:
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+
+    sns.palplot([c for c in status.values() if c is not None])
+
+    for t, tschemes in schemes.items():
+        print(t)
+        for name, colors in tschemes.items():
+
+            sns.palplot(colors)
+            plt.title(f"{t}.{name}")

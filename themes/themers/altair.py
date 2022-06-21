@@ -22,6 +22,12 @@ class AltairThemer(BaseThemer):
         return lambda: {
             "config": {
                 "background": theme["paper"]["color"],
+                "title": {
+                    "font": theme["font"]["family"],
+                    "fontSize": theme["title"]["font"]["size"],
+                    "color": theme["font"]["color"],
+                    "anchor": theme["title"]["anchor"],
+                },
                 "axisX": {
                     "titleColor": theme["axis"]["title"]["color"],
                     "labelColor": theme["axis"]["label"]["color"],
