@@ -2,7 +2,7 @@ import logging
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-from .base import BaseThemer
+from themes.themers.base import BaseThemer
 
 
 logger = logging.getLogger(__name__)
@@ -26,4 +26,10 @@ class MatplotlibThemer(BaseThemer):
         return {
             "figure.facecolor": theme["paper"]["color"],
             "axes.facecolor": theme["paper"]["color"],
+            "axes.prop_cycle": mpl.cycler(color=theme["coloring"]["categorical"]),
+            "axes.grid": True,
+            "grid.color": theme["axis"]["grid"]["color"],
+            "grid.linewidth": ".5",
+            "xtick.color": theme["axis"]["domain"]["color"],
+            "ytick.color": theme["axis"]["domain"]["color"],
         }

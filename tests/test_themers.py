@@ -1,4 +1,4 @@
-from themes.themes.base import capon_theme
+from themes.themes.capon_theme import capon_theme
 
 expected_themers = []
 

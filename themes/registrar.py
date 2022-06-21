@@ -1,5 +1,5 @@
 import logging
-from themes.themes.base import capon_theme
+from themes.themes.capon_theme import capon_theme
 
 
 logger = logging.getLogger(__name__)

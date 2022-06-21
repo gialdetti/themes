@@ -7,7 +7,7 @@ requirements = ["numpy", "pandas"]
 
 setup(
     name="themes",
-    version="0.0.2",
+    version="0.0.3",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="themes: style once, plot everywhere",
