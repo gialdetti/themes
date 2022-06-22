@@ -24,12 +24,25 @@ class MatplotlibThemer(BaseThemer):
 
     def transform(theme):
         return {
+            # Figure
             "figure.facecolor": theme["paper"]["color"],
+            # Axes
             "axes.facecolor": theme["paper"]["color"],
-            "axes.prop_cycle": mpl.cycler(color=theme["coloring"]["categorical"]),
+            "axes.linewidth": 0.5,
+            "axes.edgecolor": theme["axis"]["grid"]["color"],
+            "axes.labelcolor": theme["axis"]["title"]["color"],
             "axes.grid": True,
+            "axes.prop_cycle": mpl.cycler(color=theme["coloring"]["categorical"]),
+            # Grid
             "grid.color": theme["axis"]["grid"]["color"],
-            "grid.linewidth": ".5",
-            "xtick.color": theme["axis"]["domain"]["color"],
-            "ytick.color": theme["axis"]["domain"]["color"],
+            "grid.linewidth": 0.5,
+            # Axis
+            "xtick.color": theme["axis"]["grid"]["color"],
+            "xtick.labelcolor": theme["axis"]["label"]["color"],
+            "xtick.major.width": 0.5,
+            "xtick.minor.width": 0.5,
+            "ytick.color": theme["axis"]["grid"]["color"],
+            "ytick.labelcolor": theme["axis"]["label"]["color"],
+            "ytick.major.width": 0.5,
+            "ytick.minor.width": 0.5,
         }

@@ -1,10 +1,17 @@
 import yaml
 
+paper_color = "#fff1e5"
+paper_color_dark = "#f2dfce"
 
-textColor = "#3C3C3C"
-axisColor = textColor
+light_color = "#D5CDBE"
+med_color = "#606060"
+dark_color = "#3C3C3C"
+
+
+textColor = dark_color
 # gridColor = "#DEDDDD"
-gridColor = "#D5CDBE"
+gridColor = light_color
+axisColor = gridColor
 
 # axisColor = "red"
 # gridColor = "green"
@@ -58,7 +65,7 @@ schemes = {
 
 capon_theme_spec = f"""
 paper:
-    color: "#fff1e5"
+    color: "{paper_color}"
 
 font:
     family: "Palatino"
@@ -71,9 +78,9 @@ title:
 
 axis:
     title: 
-        color: "{axisColor}"
+        color: "{textColor}"
     label:
-        color: "#606060"
+        color: "{med_color}"
     domain:
         color: "{axisColor}"
     grid: 
