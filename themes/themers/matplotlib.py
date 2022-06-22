@@ -11,9 +11,18 @@ logger = logging.getLogger(__name__)
 class MatplotlibThemer(BaseThemer):
     def register(name, theme):
         logger.info(f"Registering '{name}' theme to matplotlib")
-        plt.style.library.update(
-            {name: mpl.RcParams(MatplotlibThemer.transform(theme))}
-        )
+        rc_params = MatplotlibThemer.transform(theme)
+
+        incompatible_params = {
+            k: v for k, v in rc_params.items() if not k in mpl.rcParams
+        }
+        if len(incompatible_params) > 0:
+            logger.info(
+                f"Remvoing {len(incompatible_params)} incompatible params (HINT: matplotlib can be upgraded): {incompatible_params}"
+            )
+            rc_params = {k: v for k, v in rc_params.items() if k in mpl.rcParams}
+
+        plt.style.library.update({name: mpl.RcParams(rc_params)})
         plt.style.available[:] = sorted(plt.style.library.keys())
 
     def enable(name):
