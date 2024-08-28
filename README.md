@@ -4,6 +4,7 @@
 Universal theme styling across the different python visualization libraries. The package also contains out-of-the-box themes (e.g., a financial news theme) for instant use.
 
 ## Quickstart
+The full example in a live notebook is available [below](#examples). Here are the key snippets,
 
 Libraries and data
 ```python
@@ -51,8 +52,6 @@ with alt.themes.enable('capon'):
 ```
 ![](examples/images/markets-altair.png)
 
-
-The full example in a live notebook is provided [below](#examples).
 
 ## Installing
 ### Install latest release version via [pip](https://pip.pypa.io/en/stable/quickstart/)
