@@ -16,7 +16,7 @@ dev_packages = (
 
 setup(
     name="themes",
-    version="0.0.4",
+    version="0.0.5",
     author="Eyal Gal",
     author_email="eyalgl@gmail.com",
     description="themes: style once, plot everywhere",

@@ -30,16 +30,24 @@ import altair as alt
 
 
 with alt.themes.enable('capon'):
-    chart = alt.Chart(markets).mark_line().encode(
-        x=alt.X('timestamp', title=None, axis=alt.Axis(format="%b %y")),
-        y=alt.Y('relative_price', title="Relative Price", axis=alt.Axis(format='+%')),
-        color='symbol',
-        tooltip=['timestamp', 'symbol', alt.Tooltip('relative_price', format='+.2%')],
-    ).properties(
-        title={
-            "text": f"Market Indexes Change",
-            "subtitle": f"Relative to {markets['timestamp'].dt.date.min()}",
-        },
+    display(
+        alt.Chart(markets)
+        .mark_line(interpolate="monotone")
+        .encode(
+            x=alt.X("timestamp", title=None, axis=alt.Axis(format="%b %y")),
+            y=alt.Y("relative_price", title="Relative Price", axis=alt.Axis(format="+%")),
+            color="symbol",
+            tooltip=["timestamp", "symbol", alt.Tooltip("relative_price", format="+.2%")],
+        )
+        .properties(
+            title={
+                "text": f"Market Indexes Change",
+                "subtitle": f"Relative to {markets['timestamp'].dt.date.min()}",
+            },
+            width=600,
+            height=200,
+        )
+    )
 ```
 ![](examples/images/markets-altair.png)
 
