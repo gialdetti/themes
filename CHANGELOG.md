@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- FEAT: Enrich altair themes with colors and range schemes.
+- MAINT: Extend setup.py to support install modes.
 
 ## [0.0.4] - 2022-06-22
 - API: theme from YAML, a poc.

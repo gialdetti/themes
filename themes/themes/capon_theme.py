@@ -28,9 +28,8 @@ status = {
 }
 
 schemes = {
-    "qualitative": {
-        "Set1": ["#C66254", "#EFA558", "#809E9A", "#94826A"],
-        "Set2": [
+    "categorical": {
+        "Set1": [
             "#27757B",
             "#EEA45F",
             "#94826B",
@@ -39,6 +38,13 @@ schemes = {
             "#819E9A",
             "#746E7F",
         ],
+        "Set2": ["#C66254", "#EFA558", "#809E9A", "#94826A"],
+    },
+    "sequential": {
+        "blacks": ["#312F36", "#524F5A", "#736E7E", "#96929E", "#A8A4AE"],
+        "oranges": ["#c37122", "#dd9148", "#eda45e"],
+        "reds": ["#6f3029", "#933e33", "#c36256", "#d47e74", "#dba19c"],
+        "blues": ["#1D2931", "#3B5361", "#587C92", "#75A5C2", "#ACC9DA"],
     },
     "diverging": {
         "RdGn": [
@@ -47,18 +53,13 @@ schemes = {
             "#C17E92",
             "#D4A4B3",
             "#E6CBD3",
+            "#DBD6CA",  # mine
             "#D1E1C1",
             "#AECB92",
             "#8CB564",
             "#6B9E46",
             "#478A16",
         ]
-    },
-    "continuous": {
-        "blacks": ["#312F36", "#524F5A", "#736E7E", "#96929E", "#A8A4AE"],
-        "oranges": ["#c37122", "#dd9148", "#eda45e"],
-        "reds": ["#6f3029", "#933e33", "#c36256", "#d47e74", "#dba19c"],
-        "blues": ["#1D2931", "#3B5361", "#587C92", "#75A5C2", "#ACC9DA"],
     },
 }
 
@@ -87,7 +88,10 @@ axis:
         color: "{gridColor}"
 
 coloring:
-    categorical: {schemes["qualitative"]["Set1"]}
+    categorical: {schemes["categorical"]["Set1"]}
+    sequential: {schemes["sequential"]["oranges"]}
+    diverging: {schemes["diverging"]["RdGn"]}
+    heatmap: {schemes["sequential"]["blues"]}
 """
 
 
@@ -95,7 +99,7 @@ capon_theme = yaml.safe_load(capon_theme_spec)
 capon_theme
 
 
-if False:
+if __name__ == "__main__":
     import matplotlib.pyplot as plt
     import seaborn as sns
 

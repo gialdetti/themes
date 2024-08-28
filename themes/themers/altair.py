@@ -21,6 +21,11 @@ class AltairThemer(BaseThemer):
 
         return lambda: {
             "config": {
+                "view": {
+                    "continuousHeight": 300,
+                    "continuousWidth": 400,
+                    "stroke": "transparent",
+                },
                 "background": theme["paper"]["color"],
                 "title": {
                     "font": theme["font"]["family"],
@@ -28,11 +33,8 @@ class AltairThemer(BaseThemer):
                     "color": theme["font"]["color"],
                     "anchor": theme["title"]["anchor"],
                     "subtitleColor": theme["font"]["color"],
-                    # "offset": 40,
-                    # "dx": 20,
-                    # "dy": 20,
                 },
-                "axisX": {
+                "axis": {
                     "titleColor": theme["axis"]["title"]["color"],
                     "labelColor": theme["axis"]["label"]["color"],
                     "domain": True,
@@ -41,16 +43,17 @@ class AltairThemer(BaseThemer):
                     "tickColor": theme["axis"]["grid"]["color"],
                     "gridColor": theme["axis"]["grid"]["color"],
                 },
-                "axisY": {
+                "legend": {
                     "titleColor": theme["axis"]["title"]["color"],
                     "labelColor": theme["axis"]["label"]["color"],
-                    "domain": True,
-                    "domainColor": theme["axis"]["domain"]["color"],
-                    "ticks": True,
-                    "tickColor": theme["axis"]["grid"]["color"],
-                    "gridColor": theme["axis"]["grid"]["color"],
                 },
-                "range": {"category": theme["coloring"]["categorical"]},
+                "range": {
+                    "category": theme["coloring"]["categorical"],
+                    "ramp": theme["coloring"]["sequential"],
+                    "diverging": theme["coloring"]["diverging"],
+                    "heatmap": theme["coloring"]["heatmap"],
+                    # "ordinal":
+                },
             }
         }
 

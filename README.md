@@ -5,6 +5,7 @@ Universal theme styling across the different python visualization libraries. The
 
 ## Quickstart
 
+Libraries and data
 ```python
 import themes
 from themes import datasets
@@ -13,7 +14,21 @@ themes.register()
 markets = datasets.load_markets()
 ```
 
+Visualization with [`matplotlib`](https://matplotlib.org)
 ```python
+import matplotlib.pyplot as plt
+
+
+with plt.style.context('capon'):
+    markets.pivot_table(index='timestamp', columns='symbol', values='relative_price').plot()
+```
+![](examples/images/markets-matplotlib.png)
+
+Visualization with [`altair`](https://altair-viz.github.io)
+```python
+import altair as alt
+
+
 with alt.themes.enable('capon'):
     chart = alt.Chart(markets).mark_line().encode(
         x=alt.X('timestamp', title=None, axis=alt.Axis(format="%b %y")),
@@ -28,11 +43,6 @@ with alt.themes.enable('capon'):
 ```
 ![](examples/images/markets-altair.png)
 
-```python
-with plt.style.context('capon'):
-    markets.pivot_table(index='timestamp', columns='symbol', values='relative_price').plot()
-```
-![](examples/images/markets-matplotlib.png)
 
 The full example in a live notebook is provided [below](#examples).
 
@@ -61,7 +71,7 @@ All examples are located in [examples](examples) folder.
 
 |     Theme    |   MyBinder   | Colab |
 | ------------ | :----------: | :---: |
-| [Markets](https://nbviewer.jupyter.org/github/gialdetti/themes/blob/main/examples/plot-markets.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/themes/main?filepath=examples/plot-markets.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/themes/blob/main/examples/plot-markets.ipynb) | 
+| [Markets](https://nbviewer.jupyter.org/github/gialdetti/themes/blob/main/examples/visualize-markets.ipynb) | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gialdetti/themes/main?filepath=examples/visualize-markets.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gialdetti/themes/blob/main/examples/visualize-markets.ipynb) | 
 
 ### Testing
 After installation, you can launch the test suite:
